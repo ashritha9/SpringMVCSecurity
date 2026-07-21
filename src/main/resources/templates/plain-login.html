@@ -6,6 +6,9 @@
 <form action="#" th:action="@{/authenticateTheUser}" method="POST">
 <h2>My Custom Login</h2>
 <hr>
+<div th:if="${param.error}">
+<i>Sorry! You have entered the wrong credentials</i>
+</div>
 <p>User name : <input type="text" name="username"/></p>
 <p>Password : <input type="text" name="password"/></p>
 <input type="submit" value="Login">
