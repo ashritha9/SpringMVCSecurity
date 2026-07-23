@@ -26,6 +26,9 @@
 <div th:if="${param.error}">
 <i class="failed">Sorry! You have entered the wrong credentials</i>
 </div>
+<div th:if="${param.logout}">
+<i class="failed">You have been logged out successfully</i>
+</div>
                             <!-- Login Form -->
                             <form action="#" th:action="@{/authenticateTheUser}" method="POST" class="form-horizontal">
 

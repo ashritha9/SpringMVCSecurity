@@ -38,10 +38,14 @@ public class DemoSecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http)
 	{
 		http.authorizeHttpRequests(configurer ->
-		configurer.anyRequest().authenticated())
+		configurer.requestMatchers("/leaders/**").hasRole("MANAGER")
+		.requestMatchers("/").hasRole("EMPLOYEE")
+		.requestMatchers("/systems/**").hasRole("ADMIN").anyRequest().authenticated())
 		.formLogin(form -> form.loginPage("/showMyLoginPage")
 				.loginProcessingUrl("/authenticateTheUser")
-				.permitAll());
+				.permitAll())
+		.logout(logout -> logout.permitAll())
+		.exceptionHandling(configurer -> configurer.accessDeniedPage("/access-denied"));
 		return http.build();
 	}
 }

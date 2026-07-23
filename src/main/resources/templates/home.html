@@ -2,5 +2,22 @@
 <head>
 <title>Home Page</title>
 </head>
-<body>Welcome to the Home Page!!!yooo!</body>
+<body>Welcome to the Home Page!!!yooo!</body><br><br>
+<p>
+User : <span sec:authentication="principal.username"></span>
+Role(s) :<span sec:authentication="principal.authorities"></span>
+</p>
+<hr>
+<p>
+<a th:href="@{/leaders}">Leadership Meeting</a>
+(Only for Managers)
+</p>
+<hr>
+<p>
+<a th:href="@{/systems}">Admins Meeting</a>
+(Only for Admins)
+</p>
+<form action="#" th:action="@{/logout}" method="POST">
+<input type="submit" value="Logout"/>
+</form>
 </html>
